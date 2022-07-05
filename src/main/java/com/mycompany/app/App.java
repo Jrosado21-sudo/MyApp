@@ -1,32 +1,43 @@
-package fibonacci;
-/**
- * 
- * @author Jose
- * @version 5/22/22
- *
- */
-public class fibonacci {
-/**
- * 
- * @param args nth number for fibonacci 
- */
-	public static void main(String[] args) {
-		
-		//This is the fibonacci nth number outcome 
-		
-		int n = 10;
-		System.out.println("The fibonacci nth number is " + fibonacci(n));
-		
+public class App {  
 
-	}
-      //fibonacci method with n parameter 
-	
-	private static long fibonacci(int n) {
-		if (n <=1) {
-			return n;
-			}
-		return(fibonacci(n - 1) + fibonacci(n - 2));
-		
-		
-	}
-	}
+    public static void main( String[] args){
+        Scanner sc = new Scanner(System.in);
+    //The nth element input
+    System.out.print("Enter an element for Fibonacci sequence: ");
+    int n = sc.nextInt();
+    sc.close();
+    
+
+    //Print out of Iteration
+    long start = System.nanoTime();
+    System.out.printf("Fibonacci iteration sequence is(Element at index %d) = %d \n", n, fibIteration(n));
+    System.out.printf("Time: %d nanoTime\n",  System.nanoTime() - start);
+
+    //Print out of recursive 
+    start = System.nanoTime();;
+    System.out.printf("Fibonacci recursive sequence is (element at index %d) = %d \n", n, fibRecursion(n));
+    System.out.printf("Time: %d NanoTime\n",  System.nanoTime()- start);
+     
+    }
+    
+     //The Iteration 
+     static int fibIteration(int n) {
+        int x = 0, y = 1, z = 1;
+        for (int i = 0; i < n; i++) {
+            x = y;
+            y = z;
+            z = y + x;
+        }
+        return x;
+    }
+
+    //The Recursion
+    static int fibRecursion(int  n) {
+        if ((n == 1) || (n == 0)) {
+            return n;
+        }
+        return fibRecursion(n - 1) + fibRecursion(n - 2);
+    }
+    }
+
+
